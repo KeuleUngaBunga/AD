@@ -21,7 +21,7 @@ radixS(List, Digit) when Digit > 1 ->
 radixS_distribute([], Buckets, _) -> Buckets;
 radixS_distribute([H|T], Buckets, Digit) ->
     D = get_digit(H, Digit),
-    NewBuckets = change_Buckets(Buckets, D, H),
+    NewBuckets = update_bucket(Buckets, D, H),
     radixS_distribute(T, NewBuckets, Digit).
 
 %Buckets initialisieren
@@ -34,22 +34,21 @@ get_digit(Number, Digit) ->
     DigitValue.
 
 %-------------------------------------
-%Einsortieren der Zahlen in die richtigen Buckets
+%Einsortieren der Zahlen in die richtigen Buckets mit iteration
 %eig wollte ich hier ein case machen, aber das hat nicht funktioniert
-change_Buckets(Buckets, D, H) ->
-    update_bucket(Buckets, D + 1, H).
-
-update_bucket([Bucket|Rest], 1, H) ->
+update_bucket([Bucket|Rest], 0, H) ->
     [[H | Bucket] | Rest];
 update_bucket([Bucket|Rest], Pos, H) ->
     [Bucket | update_bucket(Rest, Pos - 1, H)].
 %-------------------------------------
 
 %-------------------------------------
+%Äußere Schleife
 %Liste der Buckets zu einer Liste nach einem digit sortierter Liste machen
 radixS_collect([]) -> [];
 radixS_collect([H|T]) ->
     append_bucket(H, radixS_collect(T)).
+%Innere Schleife
 %Inhalte der Buckets aneinanderhaengen in reverse Reihenfolge, aufgrund von vorheriger SOrtierung
 append_bucket([], Rest) -> Rest;
 append_bucket([H|T], Rest) ->
@@ -57,6 +56,7 @@ append_bucket([H|T], Rest) ->
 %-------------------------------------
 
 % Funktion zum Testen - gibt die sortierte Liste explizit aus
+%redundant für große Listen
 radixS_test(List, Digit) ->
     Result = radixS(List, Digit),
     io:format("Sorted: ~w~n", [Result]),
