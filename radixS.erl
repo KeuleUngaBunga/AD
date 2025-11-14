@@ -30,7 +30,6 @@ make_buckets() -> [[],[],[],[],[],[],[],[],[],[]].
 %Digit an der entsprechenden Stelle holen
 get_digit(Number, Digit) ->
     skip_digits(Number, Digit - 1).
-
 % Skip the first (Digit-1) positions by dividing by 10
 skip_digits(Number, 0) -> Number rem 10;
 skip_digits(Number, Pos) -> skip_digits(Number div 10, Pos - 1).
