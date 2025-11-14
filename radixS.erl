@@ -50,9 +50,10 @@ update_bucket([Bucket|Rest], Pos, H) ->
 radixS_collect([]) -> [];
 radixS_collect([H|T]) ->
     append_bucket(H, radixS_collect(T)).
-%Inhalte der Buckets aneinanderhaengen
+%Inhalte der Buckets aneinanderhaengen in reverse Reihenfolge, aufgrund von vorheriger SOrtierung
 append_bucket([], Rest) -> Rest;
-append_bucket([H|T], Rest) -> [H | append_bucket(T, Rest)].
+append_bucket([H|T], Rest) ->
+    append_bucket(T, [H | Rest]).
 %-------------------------------------
 
 % Funktion zum Testen - gibt die sortierte Liste explizit aus
