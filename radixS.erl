@@ -1,4 +1,6 @@
-%for MODULE_NAME.erl
+%Start for radixS.erl
+%@author Tjark Pfeiffer
+%@version 1.0
 -module(radixS).
 -compile(export_all).
 
@@ -62,4 +64,4 @@ radixS_test(List, Digit) ->
     Result = radixS(List, Digit),
     io:format("Sorted: ~w~n", [Result]),
     Result.
-%end for MODULE_NAME.erl
+%end for radixS.erl
