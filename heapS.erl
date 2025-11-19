@@ -1,10 +1,12 @@
 -module(heapS).
 -author("Soheil Samar").
 %-compile(export_all).
--export([heapS/1,calcPath/1]).
+-export([heapS/1,calcPath/1,isEmpty/1,create/0,top/1,buildHeap/1]).
 
 %%-----------------------------------------------------------------
 % Heapsort
+%erstellt initialen leeren Heap
+create()->{}.
 
 % Kodierung des Feldes: Nachfolger von Position i ist 2*i links und 2*i+1 rechts
 % berechnet den Pfad zur ersten leeren Position
@@ -22,32 +24,42 @@ calcPath(1,Akku) -> Akku;
 % aktuelle Position ist gerade
 calcPath(Number,Akku) when Number rem 2 =:= 0 -> calcPath(Number div 2,[l|Akku]);
 % aktuelle Position ist ungerade
-calcPath(Number,Akku) when Number rem 2 =/= 0 -> calcPath((Number-1) div 2,[r|Akku]).				  
+calcPath(Number,Akku) when Number rem 2 =/= 0 -> calcPath((Number-1) div 2,[r|Akku]).			  
 
 heapS([]) -> [];
-heapS(List) -> heapS2(createHeap(List)).
+heapS(List) -> heapS2(buildHeap(List)).
 heapS2({Heap, NodeCounter}) -> destroyHeap(Heap, NodeCounter).
 
+%Input: Heap Output: boolean-> prüft ob der Heap leer ist
+isEmpty({}) -> true;
+isEmpty({_Value,_LCN,_RCN})->false.
+
+%liefert das Größte Element des Heaps 
+top({Value,_LCN,_RCN})->
+	Value;
+top({})->
+	{error,heap_is_empty}.
+
 %Input: List, Output: {Heap, NumberOfNodes} ; -> bringt die Element der Liste in eine MaxHeap-Struktur 
-createHeap(List) -> createHeap(List, {}, 1).
-createHeap([], Heap, PathNumber) -> {Heap, PathNumber -1};
-createHeap([H|T], Heap, PathNumber) -> createHeap(T, addElemToHeap(H, Heap, calcPath(PathNumber)), PathNumber +1).
+buildHeap(List) -> buildHeap(List, {}, 1).
+buildHeap([], Heap, PathNumber) -> {Heap, PathNumber -1};
+buildHeap([H|T], Heap, PathNumber) -> buildHeap(T, insert(H, Heap, calcPath(PathNumber)), PathNumber +1).
 
 %Input: (Element, Heap, Path zur nächsten freien Stelle), Output: Heap ; -> fügt Element in Heap an der nächsten freien Stelle ein
 % -> beim Suchen nach der nächsten freien Stelle, werden die Values der Nodes verglichen und mit dem kleineren Value weitergesucht
-addElemToHeap(Element, _Heap, []) -> {Element, {}, {}};
-addElemToHeap(Element, {Value, LCN, RCN}, [H|T]) ->
+insert(Element, _Heap, []) -> {Element, {}, {}};
+insert(Element, {Value, LCN, RCN}, [H|T]) ->
     case Element < Value of
         true ->
             case H of
-                r -> {Value, LCN, addElemToHeap(Element, RCN, T)};
-                l -> {Value, addElemToHeap(Element, LCN, T), RCN}
-            end;
-
+                r -> {Value, LCN, insert(Element, RCN, T)};
+                l -> {Value, insert(Element, LCN, T), RCN}
+            end; 
+			
         false -> 
             case H of
-                r -> {Element, LCN, addElemToHeap(Value, RCN, T)};
-                l -> {Element, addElemToHeap(Value, LCN, T), RCN}
+                r -> {Element, LCN, insert(Value, RCN, T)};
+                l -> {Element, insert(Value, LCN, T), RCN}
             end
     end.
 
