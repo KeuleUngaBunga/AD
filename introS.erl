@@ -62,7 +62,7 @@ determine_pivot_element(median, List) ->
 
 determine_pivot_element(middle, List) ->
     MiddleIndex = length(List) div 2,
-    lists:nth(MiddleIndex + 1, List);
+    get_middle(MiddleIndex-1, List);
 determine_pivot_element(random, List) ->
     random_pivot(List);
 determine_pivot_element(left, [H|_]) ->
@@ -76,6 +76,9 @@ random_pivot(List) ->
     RandomIndex = rand:uniform(length(List)),
     lists:nth(RandomIndex, List).
 
+%middle Element aus Liste holen
+get_middle(0, [H|_]) -> H;
+get_middle(N, [_|T]) when N > 0 -> get_middle(N -1, T).
 %right(letztes) Element aus Liste holen
 get_last([H]) -> H;
 get_last([_|T]) -> get_last(T).
