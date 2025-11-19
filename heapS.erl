@@ -40,13 +40,13 @@ top({Value,_LCN,_RCN})->
 top({})->
 	{error,heap_is_empty}.
 
-%Input: List, Output: {Heap, NumberOfNodes} ; -> bringt die Element der Liste in eine MaxHeap-Struktur 
-buildHeap(List) -> buildHeap(List, {}, 1).
+%Input: List, Output: {Heap, NumberOfNodes} ; -> bringt die Element der Liste in eine MaxHeap-Struktur Entwurf A1/B1
+buildHeap(List) -> buildHeap(List, {}, 1).  
 buildHeap([], Heap, PathNumber) -> {Heap, PathNumber -1};
 buildHeap([H|T], Heap, PathNumber) -> buildHeap(T, insert(H, Heap, calcPath(PathNumber)), PathNumber +1).
 
 %Input: (Element, Heap, Path zur nächsten freien Stelle), Output: Heap ; -> fügt Element in Heap an der nächsten freien Stelle ein
-% -> beim Suchen nach der nächsten freien Stelle, werden die Values der Nodes verglichen und mit dem kleineren Value weitergesucht
+% -> beim Suchen nach der nächsten freien Stelle, werden die Values der Nodes verglichen und mit dem kleineren Value weitergesucht B2
 insert(Element, _Heap, []) -> {Element, {}, {}};
 insert(Element, {Value, LCN, RCN}, [H|T]) ->
     case Element < Value of
@@ -63,13 +63,13 @@ insert(Element, {Value, LCN, RCN}, [H|T]) ->
             end
     end.
 
-%Input: (Heap, NumberOfNodes in Heap), Output: sorted List ; -> entfernt Wurzelelement des Heaps und schreibt dessen Value in sorted List, sortiert den Heap erneut und wiederholt
+%Input: (Heap, NumberOfNodes in Heap), Output: sorted List ; -> entfernt Wurzelelement des Heaps und schreibt dessen Value in sorted List, sortiert den Heap erneut und wiederholt B3
 % calcPath(NodeCounter) gibt den Path zur LastNode an
 destroyHeap(Heap, NodeCounter) -> destroyHeap(Heap, NodeCounter, []).
 destroyHeap({Value, {}, {}}, _NodeCounter, Akku) -> [Value|Akku]; 
 destroyHeap({Value, LCN, RCN}, NodeCounter, Akku) ->  destroyHeap(reHeap({Value, LCN, RCN}, calcPath(NodeCounter)), NodeCounter -1, [Value|Akku]). 
 
-%Input: (Heap, Path zur LN), Output: Heap ; -> ersetzt Wurzel mit LNV, entfernt Verweis auf LN und sortiert den Heap erneut 
+%Input: (Heap, Path zur LN), Output: Heap ; -> ersetzt Wurzel mit LNV, entfernt Verweis auf LN und sortiert den Heap erneut B4
 reHeap(Heap, Path) -> 
     {{_Value, LCN, RCN}, LastNodeValue} = removeLastNode(Heap, Path),
     makeMaxHeap({LastNodeValue, LCN, RCN}).
