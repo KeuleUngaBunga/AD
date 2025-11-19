@@ -15,7 +15,6 @@ introS(Pivot_method, List, Switch_num) ->
 calculate_maxdepth(N) ->
     2 * trunc(math:log2(N)).
 
-
 %introS 
 introS_helper(_, [], _, _) -> [];
 %zu insertionS wechseln, wenn Größe von der Liste kleiner als Switch_num ist
@@ -41,10 +40,10 @@ partition([H|T], Pivot) ->
     end.
 
 %determine pivot element based on 5 possible method
-determine_pivot_element("median", List) ->
-    First = determine_pivot_element("left", List),
-    Last = determine_pivot_element("right", List),
-    Middle = determine_pivot_element("middle", List),
+determine_pivot_element(median, List) ->
+    First = determine_pivot_element(left, List),
+    Last = determine_pivot_element(right, List),
+    Middle = determine_pivot_element(middle, List),
     if 
     First < Last, First < Middle, Last < Middle ->
         Last;
@@ -61,15 +60,14 @@ determine_pivot_element("median", List) ->
         First%wenn alle gleich sind, dann irgendeines zurueckgeben
     end;
 
-%TODO: bib Funktionen austauschen
-determine_pivot_element("middle", List) ->
+determine_pivot_element(middle, List) ->
     MiddleIndex = length(List) div 2,
     lists:nth(MiddleIndex + 1, List);
-determine_pivot_element("random", List) ->
+determine_pivot_element(random, List) ->
     random_pivot(List);
-determine_pivot_element("left", [H|_]) ->
+determine_pivot_element(left, [H|_]) ->
     H;
-determine_pivot_element("right", List) ->
+determine_pivot_element(right, List) ->
     get_last(List).
 
 

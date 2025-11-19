@@ -1,0 +1,21 @@
+Radix Sort Zufallszahlen 200004 Zahlen Startzeit: 19.11 13:56:23,950|Endezeit: 19.11 13:56:24,590| Diff: 640 ms Sortiert: true
+Radix Sort aufsteigend 200004 Zahlen Startzeit: 19.11 13:56:24,594|Endezeit: 19.11 13:56:25,194| Diff: 600 ms Sortiert: true
+Radix Sort absteigend 200004 Zahlen Startzeit: 19.11 13:56:25,202|Endezeit: 19.11 13:56:25,988| Diff: 786 ms Sortiert: true
+Introsort random Zufallszahlen Wechsel bei 16, 2000042 Zahlen Startzeit: 19.11 13:56:23,127|Endezeit: 19.11 13:56:30,533| Diff: 7406 ms Sortiert: true
+Introsort random aufsteigend 2000042 Zahlen Startzeit: 19.11 13:56:30,572|Endezeit: 19.11 13:56:35,406| Diff: 4834 ms Sortiert: true
+Introsort random absteigend 2000042 Zahlen Startzeit: 19.11 13:56:35,427|Endezeit: 19.11 13:56:41,673| Diff: 6246 ms Sortiert: true
+Introsort middle Zufallszahlen Wechsel bei 16, 2000042 Zahlen Startzeit: 19.11 13:56:23,127|Endezeit: 19.11 13:56:33,639| Diff: 10512 ms Sortiert: true
+Introsort middle aufsteigend 2000042 Zahlen Startzeit: 19.11 13:56:33,658|Endezeit: 19.11 13:56:37,707| Diff: 4049 ms Sortiert: true
+Introsort middle absteigend 2000042 Zahlen Startzeit: 19.11 13:56:37,726|Endezeit: 19.11 13:56:42,029| Diff: 4303 ms Sortiert: true
+Heap Sort Zufallszahlen 2000042 Zahlen Startzeit: 19.11 13:56:23,127|Endezeit: 19.11 13:56:43,261| Diff: 20134 ms Sortiert: true
+Heap Sort aufsteigend 2000042 Zahlen Startzeit: 19.11 13:56:43,279|Endezeit: 19.11 13:56:50,622| Diff: 7343 ms Sortiert: true
+Heap Sort absteigend 2000042 Zahlen Startzeit: 19.11 13:56:50,640|Endezeit: 19.11 13:57:00,392| Diff: 9752 ms Sortiert: true
+Introsort median Zufallszahlen Wechsel bei 16, 2000042 Zahlen Startzeit: 19.11 13:56:23,127|Endezeit: 19.11 13:56:47,947| Diff: 24820 ms Sortiert: true
+Introsort median aufsteigend 2000042 Zahlen Startzeit: 19.11 13:56:47,963|Endezeit: 19.11 13:56:51,010| Diff: 3047 ms Sortiert: true
+Introsort median absteigend 2000042 Zahlen Startzeit: 19.11 13:56:51,027|Endezeit: 19.11 13:57:10,671| Diff: 19645 ms Sortiert: true
+Introsort left Zufallszahlen Wechsel bei 16, 2000042 Zahlen Startzeit: 19.11 13:56:23,127|Endezeit: 19.11 13:56:47,680| Diff: 24553 ms Sortiert: true
+Introsort left aufsteigend 2000042 Zahlen Startzeit: 19.11 13:56:47,692|Endezeit: 19.11 13:57:04,033| Diff: 16340 ms Sortiert: true
+Introsort left absteigend 2000042 Zahlen Startzeit: 19.11 13:57:04,048|Endezeit: 19.11 13:57:20,057| Diff: 16009 ms Sortiert: true
+Introsort right Zufallszahlen Wechsel bei 16, 2000042 Zahlen Startzeit: 19.11 13:56:23,127|Endezeit: 19.11 13:56:48,433| Diff: 25305 ms Sortiert: true
+Introsort right aufsteigend 2000042 Zahlen Startzeit: 19.11 13:56:48,447|Endezeit: 19.11 13:57:07,076| Diff: 18629 ms Sortiert: true
+Introsort right absteigend 2000042 Zahlen Startzeit: 19.11 13:57:07,086|Endezeit: 19.11 13:57:20,986| Diff: 13900 ms Sortiert: true
