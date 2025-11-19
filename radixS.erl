@@ -1,8 +1,7 @@
 %Start for radixS.erl
-%@author Tjark Pfeiffer
-%@version 1.0
 -module(radixS).
--compile(export_all).
+-author("Tjark Pfeiffer").
+-export([radixS/2,radixS_test/2]).
 
 %cd("C:/Users/pfeif/Documents/HAW/S3/AD 2/code/AD_Aufg2/Ad_Aufg2").
 

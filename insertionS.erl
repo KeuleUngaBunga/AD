@@ -1,8 +1,7 @@
 %Start for insertionS.erl
-%@author Tjark Pfeiffer
-%@version 1.0
 -module(insertionS).
--compile(export_all).
+-author("Tjark Pfeiffer").
+-export([insertionS/1]).
 
 %cd("C:/Users/pfeif/Documents/HAW/S3/AD 2/code/AD_Aufg2/Ad_Aufg2").
 
