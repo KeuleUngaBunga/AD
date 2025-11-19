@@ -12,24 +12,24 @@ introS(Pivot_method, List, Switch_num) ->
     introS_helper(Pivot_method, List, Maxdepth, Switch_num).
 
 %maxdepth berechnen
-calculate_maxdepth(N) ->
+calculate_maxdepth(N) ->%Entwurf B1
     2 * trunc(math:log2(N)).
 
 %introS 
-introS_helper(_, [], _, _) -> [];
+introS_helper(_, [], _, _) -> [];%Entwurf A1/A2
 %zu insertionS wechseln, wenn Größe von der Liste kleiner als Switch_num ist
 introS_helper(_, List, _, Switch_num) when Switch_num >= length(List) ->
     insertionS(List);
 %zu Heap sort wechseln, wenn maxdepth erreicht ist
-introS_helper(_, List, 0, _) -> heapS(List);
+introS_helper(_, List, 0, _) -> heapS(List);%Entwurf B1/B2
 %continue with quicksort
-introS_helper(Pivot_method, List, Maxdepth, Switch_num) ->
+introS_helper(Pivot_method, List, Maxdepth, Switch_num) ->%Entwurf C1
     {Less, Greater,_} = partition(List, determine_pivot_element(Pivot_method, List)),
     concat_lists(introS_helper(Pivot_method, Less, Maxdepth - 1, Switch_num), %beide sortierte Hälften zusammenfügen
                     introS_helper(Pivot_method, Greater, Maxdepth - 1, Switch_num)).
 
 %partition function
-partition([], _) -> {[], [], 0};
+partition([], _) -> {[], [], 0};%Entwurf C1
 partition([H|T], Pivot) ->  
     {Less, Greater, Alt} = partition(T, Pivot),%Alt to distribute equal Elements evenly
     if
